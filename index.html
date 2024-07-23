@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	function sendMessage() {
+    var messageInput = document.querySelector('div[contenteditable="true"]');
+    var messageText = " ";
+    messageInput.innerHTML = messageText;
+    var event = new Event('input', {
+    bubbles: true,
+    cancelable: true
+    });
+    messageInput.dispatchEvent(event);
+    var keyupEvent = new KeyboardEvent('keyup', {
+    bubbles: true,
+    cancelable: true,
+    key: 'Enter',
+    charCode: 13,
+    keyCode: 13
+    });
+    messageInput.dispatchEvent(keyupEvent);
+    var sendButton = document.querySelector('button[class*="send"]');
+    sendButton.click();
+    }
+    setInterval(sendMessage, 400);
+</script>
+</body>
+</html>
